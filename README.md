@@ -22,3 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+ウイスキーのレビューサイトを作成していきます。
+
+実装機能のスプレッドシートです。
+
+https://docs.google.com/spreadsheets/d/18DfWc7nn0ghk04YDZTx5j20gLIOwBQFaGq735-owtVM/edit#gid=1091086188

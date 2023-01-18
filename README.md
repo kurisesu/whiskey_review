@@ -1,28 +1,33 @@
-# README
+# <whiskey_review>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+<自分がいままで呑んできたウイスキーを紹介して,見てくれた人が呑んでみたい買ってみたい,実際の原産地や蒸留所に行ってみたいと興味を持ってもらえる様なレビューサイトにしたい>
 
-Things you may want to cover:
+### テーマを選んだ理由
+<自分がウイスキーが好きで、今まで呑んできたウイスキーや美味しい飲み方を紹介してウイスキーに興味を持ってくれる人が増えてくれたら嬉しいと思ったから>
 
-* Ruby version
+### ターゲットユーザ
+<ウイスキーが好きな人>
+<お酒が好きで、まだウイスキーを呑んだことの無い人>
 
-* System dependencies
+### 主な利用シーン
+<利用者が自分の興味のあるカテゴリーのウイスキーを検索する時>
 
-* Configuration
+## 設計書
+<...>
 
-* Database creation
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Database initialization
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-ウイスキーのレビューサイトを作成していきます。
 
 実装機能のスプレッドシートです。
 

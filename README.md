@@ -1,4 +1,4 @@
-# ISO selection whiskey!!
+# ISO selection whiskey!
 
 ## サイト概要
 ### サイトテーマ

@@ -1,0 +1,34 @@
+<div class="container">
+ <div class="row">
+  <div class="col m-3">
+    <h2 class="text-white">レビュー一覧</h2><br>
+        <p class="text-right"><%= link_to "レビューを新規登録",new_admin_review_path, class:"btn btn-primary text-white" %></p>
+    <table class="table table-borderless table-dark" style="opacity: 0.8;">
+
+      <thead>
+        <tr>
+          <th scope="col">レビューID</th>
+          <th scope="col">ウイスキー名</th>
+          <th scope="col">ジャンル名</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @reviews.each do |review| %>
+        <tr>
+          <th scope="low"><%= review.id %></th>
+          <th scope="low"><%= link_to review.whiskey_name, admin_review_path(review), class:"text-white" %></th>
+          <th scope="low"><%= review.genre.genre_name %></th>
+    	    <th></th>
+				  </th>
+        </tr>
+        <% end %>
+      </tbody>
+
+    </table>
+
+  </div>
+ </div>
+ <%= paginate @reviews %>
+</div>

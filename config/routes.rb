@@ -24,19 +24,20 @@ namespace :admin do
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
-    
+
     post '/customers/gest/sign_in' => 'homes#guest'
 
     resources :genres,only:[:index,:show]
+
 
     get 'customers/my_page' => 'customers#show'
     get 'customers/information/edit' => 'customers#edit'
     patch 'customers/information' => 'customers#update'
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdraw' => 'customers#withdraw'
+    get 'customers/reviews' => 'reviews#index'
+    get 'customers/review/:id' => 'reviews#show',as:'customers_review'
 
-
-    resources :reviews,only:[:index,:show,]
 
     resources :comments,only:[:new,:create, :update, :destroy]
 

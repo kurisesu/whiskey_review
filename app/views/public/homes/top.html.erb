@@ -21,7 +21,57 @@
     </div>
 
 
-    <h2 class="mt-5 mb-3 text-white text-center" style="background-color: #343a40; opacity: 0.8; width: 150px;">新着レビュー</h2>
-      <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-eq-height">
 
+    <div class="container">
+    <h2 class="mt-5 mb-3 text-white text-center" style="background-color: #343a40; opacity: 0.8; width: 150px;">新着レビュー</h2>
+
+        <div class="row">
+
+        <% @reviews.each do |review| %>
+        <div class="col-md-3">
+        <div class="card mx-auto mt-4 bg-dark text-white">
+
+        <%= link_to admin_review_path(review) do %>
+          <% if review.image.attached? %>
+            <%= image_tag review.image, class:"card-img-top top-review-image" %>
+          <% else %>
+            <%= image_tag 'no_image.jpg', class:"card-img-top top-review-image" %>
+          <% end %>
+        <% end %>
+
+            <div class="card-body">
+            <h6 class="card-title">
+              <%= link_to review.whiskey_name, admin_review_path(review), class: 'text-white' %>
+            </h6>
+            <div class="card-text">
+              <%= simple_format(review.introduction_text) %>
+            </div>
+            </div>
+            <div class="card-footer text-right">
+              <small>
+                <%= review.created_at.in_time_zone('Tokyo').strftime('%Y年%m月%d日 %H時%m分') %>
+              </small>
+            </div>
+        </div>
+        </div>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+<div id="raty"></div>
+
+
+<script>
+  var elem = document.getElementById('raty')
+  var opt = {
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    readOnly: true,
+    score: 3.5
+  }
+  raty(elem, opt)
+</script>

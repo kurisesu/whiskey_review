@@ -5,10 +5,10 @@
     <div class = "col-9 mt-5" >
     	<div class="row">
         <div class="col -5 text-center" >
-         <% if @review.image.attached? %>
-        <%= image_tag @review.image, size: "300x300" %>
-         <% else %>
-        <%= image_tag 'no_image.jpg', class:"card-img-top top-review-image" %>
+        <% if @review.image.attached? %>
+         <%= image_tag @review.image, size: "300x300" %>
+        <% else %>
+         <%= image_tag 'no_image.jpg', class:"card-img-top top-review-image" %>
         <% end %>
     </div>
     <div class = "col -5" >
@@ -26,26 +26,14 @@
 
 	   <tr>
 	     <th>ジャンル</th>
-	     <td><%= @review.genre.genre_name %></td>
+	     <td><%= @genre.genre_name %></td>
 	   </tr>
-
-
-
-
 
 	  </table>
 
 	  </div>
-	  </div>
-	  </div>
-
-	  <div class="d-flex justify-content-center mb-5">
-      <% if admin_signed_in? %>
-      <%= link_to "編集する", edit_admin_review_path(@review), class:'btn btn-success' %>
-    　<% end %>
-
-    </div>
-
-  </div>
- </div>
-</div>
+	   </div>
+	    </div>
+	     </div>
+	      </div>
+	       </div>

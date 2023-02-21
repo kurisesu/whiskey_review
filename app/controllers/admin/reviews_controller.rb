@@ -23,9 +23,9 @@ class Admin::ReviewsController < ApplicationController
   end
 
   def destroy
-    @reviews = current_admin.review.find(params[:id])
+    @reviews = Review.find(params[:id])
     @reviews.destroy
-    redirect_to request.referer
+    redirect_to admin_reviews_path
   end
 
 
@@ -45,9 +45,8 @@ class Admin::ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit( :whiskey_name, :introduction_text, :image, :genre_id)
+    params.require(:review).permit(:whiskey_name, :introduction_text, :image, :genre_id)
   end
-
 end
 
 

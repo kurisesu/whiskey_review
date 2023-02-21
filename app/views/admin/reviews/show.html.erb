@@ -28,23 +28,44 @@
 	     <th>ジャンル</th>
 	     <td><%= @review.genre.genre_name %></td>
 	   </tr>
-
-
-
-
-
 	  </table>
+	    <%= link_to "コメントを送る", new_review_comment_path(@review), class:'btn btn-success' %>
 
-	  </div>
-	  </div>
-	  </div>
+	    <% @review.comments.each do |comment| %>
+	    <div class="d-flex justify-content-center mb-5">
+       <% if admin_signed_in? || current_customer == comment.customer %>
+       <%= link_to "削除する", review_comment_path(@review.id, comment.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+     　<% end %>
+     </div>
+	     <div id="raty_<%= comment.id %>"></div>
 
-	  <div class="d-flex justify-content-center mb-5">
-      <% if admin_signed_in? %>
+    <script>
+      var elem = document.getElementById('raty_<%= comment.id %>')
+      var opt = {
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        starHalf: "<%= asset_path('star-half.png') %>",
+        readOnly: true,
+        score: <%= comment.star %>,
+      }
+      raty(elem, opt);
+    </script>
+    <div>
+     <p> コメント:<%= comment.comment %> </p>
+    </div>
+
+     <div>
+      <p> 名前:<%= comment.customer.nickname %></p>
+     </div>
+	    <% end %>
+
+	    <% if admin_signed_in? %>
       <%= link_to "編集する", edit_admin_review_path(@review), class:'btn btn-success' %>
     　<% end %>
 
-    </div>
+	  </div>
+	  </div>
+	  </div>
 
   </div>
  </div>

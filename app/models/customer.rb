@@ -7,9 +7,10 @@ class Customer < ApplicationRecord
   def active_for_authentication?
     super && (is_deleted == false)
   end
-  
+
   has_one_attached :image
 
   has_many :comments
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
+
 end

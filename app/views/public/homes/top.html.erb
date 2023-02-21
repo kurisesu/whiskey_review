@@ -71,7 +71,7 @@
     starOff: "<%= asset_path('star-off.png') %>",
     starHalf: "<%= asset_path('star-half.png') %>",
     readOnly: true,
-    score: 3.5
+    score: <%#= @comment.star[:id] %>
   }
   raty(elem, opt)
 </script>

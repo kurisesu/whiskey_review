@@ -24,9 +24,9 @@
       </table>
        <%= f.submit '変更を保存', class: 'btn btn-success' %>
        <% end %>
-       <%= link_to "レビューを削除する", admin_reviews_path, method: :delete, class:"btn btn-danger" %>
-      
-       
+       <%= link_to "レビューを削除する", admin_review_path(@review.id), method: :delete, class:"btn btn-danger","data-confirm" => "本当に削除しますか？" %>
+
+
     </div>
    </div>
   </div>

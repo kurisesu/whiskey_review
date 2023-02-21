@@ -1,0 +1,33 @@
+<div class="container">
+ <div class="row">
+  <div class="col m-3">
+    <h1 class="text-black">コメント画面</h1><br>
+    <div class = "col-9 mt-5" >
+      <%= form_with model: @comment, url: review_comments_path, method: :post, local:true do |f| %>
+       <table class="table table-borderless table-dark" style="opacity: 0.8;">
+        <tr></tr>
+        <th><%= f.label :コメントを送る %></th>
+        <td><%= f.text_area :comment %></td>
+       </table>
+                   <!-- 評価 -->
+         <div class="form-group row" id="star">
+           <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
+           <%= f.hidden_field :star, id: :review_star %>
+         </div>
+
+         <script>
+          var elem = document.getElementById('star')
+          var opt = {
+            starOn: "<%= asset_path('star-on.png') %>",
+            starOff: "<%= asset_path('star-off.png') %>",
+            starHalf: "<%= asset_path('star-half.png') %>",
+            scoreName: "comment[star]"
+          }
+          raty(elem, opt)
+        </script>              <%= f.submit '新規登録', class: 'btn btn-success' %>
+        <% end %>
+      </div>
+     </div>
+    </div>
+   </div>
+

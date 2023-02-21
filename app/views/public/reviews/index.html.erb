@@ -11,7 +11,7 @@
         <div class="col-md-3">
         <div class="card mx-auto mt-4 bg-dark text-white">
 
-        <%= link_to customers_review_path(review) do %>
+        <%= link_to admin_review_path(review) do %>
           <% if review.image.attached? %>
             <%= image_tag review.image, class:"card-img-top top-review-image" %>
           <% else %>
@@ -21,7 +21,7 @@
 
             <div class="card-body">
             <h6 class="card-title">
-              <%= link_to review.whiskey_name, customers_review_path(review), class: 'text-white' %>
+              <%= link_to review.whiskey_name, admin_review_path(review), class: 'text-white' %>
             </h6>
             <div class="card-text">
               <%= simple_format(review.introduction_text) %>

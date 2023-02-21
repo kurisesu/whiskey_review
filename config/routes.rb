@@ -16,7 +16,7 @@ namespace :admin do
     root to: 'homes#top'
     resources :reviews, only: [:index, :new, :show, :edit, :update, :create, :destroy]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :genres, only: [:index, :create, :edit, :update, :delete]
+    resources :genres, only: [:index, :create, :edit, :update, :destroy]
     resources :sessions, only: [:new, :create, :destroy,]
     resources :homes, only: [:update]
   end
@@ -35,11 +35,10 @@ namespace :admin do
     patch 'customers/information' => 'customers#update'
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdraw' => 'customers#withdraw'
-    get 'customers/reviews' => 'reviews#index'
-    get 'customers/review/:id' => 'reviews#show',as:'customers_review'
-
-
+    resources :reviews, only: [:index, :show,] do
     resources :comments,only:[:new,:create, :update, :destroy]
+  end
+
 
 
 

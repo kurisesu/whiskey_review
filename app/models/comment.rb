@@ -1,6 +1,5 @@
 class Comment < ApplicationRecord
 
-  has_many :comments
-  has_many :customers
-
+  belongs_to :customer
+  belongs_to :review
 end

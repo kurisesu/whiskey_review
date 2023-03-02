@@ -4,6 +4,12 @@
       <h2>レビュー一覧（全<%= @reviews.count %>件）</h2>
       <div class='d-flex justify-content-start flex-wrap mb-5'>
 
+        <div class="search_form">
+          <%= form_tag({controller:"reviews",action:"index"}, method: :get) do %>
+            <%= select_tag :tag_id, options_from_collection_for_select(@tags, :id, :name, selected: params[:tag_id]) %>
+            <%= submit_tag "検索する" %>
+          <% end %>
+
 
         <div class="row">
 

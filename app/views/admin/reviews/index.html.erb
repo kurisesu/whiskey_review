@@ -19,7 +19,13 @@
         <tr>
           <th scope="low"><%= review.id %></th>
           <th scope="low"><%= link_to review.whiskey_name, admin_review_path(review), class:"text-white" %></th>
-          <th scope="low"><%= review.genre.genre_name %></th>
+          <th scope="low">
+            <% if review.genre != nil %>
+             <%= review.genre.genre_name %>
+            <% else %>
+             ジャンルなし
+            <%end%>
+          </th>
     	    <th></th>
 				  </th>
         </tr>

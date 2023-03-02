@@ -19,6 +19,10 @@ namespace :admin do
     resources :genres, only: [:index, :create, :edit, :update, :destroy]
     resources :sessions, only: [:new, :create, :destroy,]
     resources :homes, only: [:update]
+
+    resources :tags do
+    get 'reviews', to: 'reviews#search'
+  end
   end
 
   scope module: :public do
@@ -28,6 +32,7 @@ namespace :admin do
     post '/customers/gest/sign_in' => 'homes#guest'
 
     resources :genres,only:[:index,:show]
+    get "search" => "reviews#search"
 
 
     get 'customers/my_page' => 'customers#show'
@@ -38,8 +43,6 @@ namespace :admin do
     resources :reviews, only: [:index, :show,] do
     resources :comments,only:[:new,:create, :update, :destroy]
   end
-
-
 
 
 

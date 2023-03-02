@@ -23,11 +23,21 @@
 
       </table>
        <%= f.submit '変更を保存', class: 'btn btn-success' %>
-       <% end %>
+
+         <div class="field">
+           <%= f.label"タグ (,で区切ると複数タグ登録できます)" %>
+           <%= f.text_field :name,value: @tag_list,class:"form-control"%>
+         </div>
+
+        <% end %>
+
+
+
        <%= link_to "レビューを削除する", admin_review_path(@review.id), method: :delete, class:"btn btn-danger","data-confirm" => "本当に削除しますか？" %>
+
 
 
     </div>
    </div>
   </div>
-</div>
+  </div>

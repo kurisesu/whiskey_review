@@ -10,6 +10,11 @@
          <% else %>
         <%= image_tag 'no_image.jpg', class:"card-img-top top-review-image" %>
         <% end %>
+                  <!--タグリスト-->
+          <% @tag_list.each do |list|%>
+           <div><%=list.name %>
+          <%="(#{list.review_tags.count})" %></div><% end %>
+
     </div>
     <div class = "col -5" >
     <table class="table table-borderless table-dark" style="opacity: 0.8;">
@@ -26,7 +31,11 @@
 
 	   <tr>
 	     <th>ジャンル</th>
-	     <td><%= @review.genre.genre_name %></td>
+	           <% if @review.genre != nil %>
+      <td><%= @review.genre.genre_name %></td>
+            <% else %>
+             <td>ジャンルはありません<td>
+            <%end%>
 	   </tr>
 	  </table>
 	    <%= link_to "コメントを送る", new_review_comment_path(@review), class:'btn btn-success' %>

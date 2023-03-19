@@ -1,7 +1,7 @@
 <div class="container">
  <div class="row">
   <div class="col m-3">
-    <h1 class="text-black">コメント画面</h1><br>
+    <h1 class="text-light">コメント画面</h1><br>
     <div class = "col-9 mt-5" >
       <%= form_with model: @comment, url: review_comments_path, method: :post, local:true do |f| %>
        <table class="table table-borderless table-dark" style="opacity: 0.8;">
@@ -11,7 +11,7 @@
        </table>
                    <!-- 評価 -->
          <div class="form-group row" id="star">
-           <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
+           <%= f.label :star,'評価 ', class:'col-md-3 col-form-label text-light' %>
            <%= f.hidden_field :star, id: :review_star %>
          </div>
 
@@ -24,7 +24,7 @@
             scoreName: "comment[star]"
           }
           raty(elem, opt)
-        </script>              <%= f.submit '新規登録', class: 'btn btn-success' %>
+        </script><%= f.submit '新規登録', class: 'btn btn-success' %>
         <% end %>
       </div>
      </div>

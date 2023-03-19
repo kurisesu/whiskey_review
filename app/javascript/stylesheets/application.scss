@@ -1,1 +1,17 @@
 @import '~bootstrap/scss/bootstrap';
+
+.top-review-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.main-container {
+  background-image: url("../images/texture962373_TP_V.jpeg");
+  height: 800px;
+  background-size: cover;
+}
+
+.nav_welcome {
+  color: white;
+}

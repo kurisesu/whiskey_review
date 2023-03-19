@@ -16,19 +16,19 @@
                 今回の様なレビューサイトの製作をしました。<br>
                 お酒が全く飲めない人でも興味を持ってもらえるようなサイトを目指しました。<br>
               </p>
-        <p>まずはこちらの<%= link_to 'ゲストログイン', customers_gest_sign_in_path, method: :post %>でお試しください！</p>
+               <p>まずはこちらの<%= link_to 'ゲストログイン', customers_gest_sign_in_path, method: :post %>でお試しください！</p>
+           </div>
         </div>
-    </div>
 
 
 
     <div class="container">
-    <h2 class="mt-5 mb-3 text-white text-center" style="background-color: #343a40; opacity: 0.8; width: 150px;">新着レビュー</h2>
+    <h2 class="mt-5 mb-3 text-white text-center" style="background-color: #343a40; opacity: 0.8; width: 200px;">新着レビュー</h2>
 
         <div class="row">
 
         <% @reviews.each do |review| %>
-        <div class="col-md-3">
+        <div class="col-2">
         <div class="card mx-auto mt-4 bg-dark text-white">
 
         <%= link_to admin_review_path(review) do %>
@@ -44,7 +44,7 @@
               <%= link_to review.whiskey_name, admin_review_path(review), class: 'text-white' %>
             </h6>
             <div class="card-text">
-              <%= simple_format(review.introduction_text) %>
+              <%= simple_format(review.genre.genre_name) %>
             </div>
             </div>
             <div class="card-footer text-right">
@@ -52,8 +52,8 @@
                 <%= review.created_at.in_time_zone('Tokyo').strftime('%Y年%m月%d日 %H時%m分') %>
               </small>
             </div>
-        </div>
-        </div>
+         </div>
+         </div>
           <% end %>
         </div>
 
@@ -61,17 +61,18 @@
     </div>
   </div>
 
-<div id="raty"></div>
 
 
-<script>
-  var elem = document.getElementById('raty')
-  var opt = {
-    starOn: "<%= asset_path('star-on.png') %>",
-    starOff: "<%= asset_path('star-off.png') %>",
-    starHalf: "<%= asset_path('star-half.png') %>",
-    readOnly: true,
-    score: <%#= @comment.star[:id] %>
-  }
-  raty(elem, opt)
-</script>
+<!--<script>-->
+<!--  var elem = document.getElementById('raty')-->
+<!--  var opt = {-->
+<!--    starOn: "<%#= asset_path('star-on.png') %>",-->
+<!--    starOff: "<%#= asset_path('star-off.png') %>",-->
+<!--    starHalf: "<%#= asset_path('star-half.png') %>",-->
+<!--    readOnly: true,-->
+     <%#= @comment.star[:id] %>
+<!--  }-->
+<!--  raty(elem, opt)-->
+<!--</script>-->
+
+

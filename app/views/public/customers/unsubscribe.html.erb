@@ -1,21 +1,20 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 text-light">
+     <h2>本当に退会しますか？</h2>
 
-  <div>
-    <h2>本当に退会しますか？</h2>
-  <div>
-
-  <p>退会すると、会員登録情報や<br>
+     <div>
+      <p>退会すると、会員登録情報や<br>
        マイページが閲覧できなくなります。<br>
        退会する場合は、「退会する」をクリックしてください。
-    </p>
-  </div>
-
-  <%= link_to "退会しない", root_path , class: "btn btn-primary"  %>
-  <%= link_to "退会する", customers_withdraw_path(@customer), method: :patch, class: "btn btn-danger" %>
-  </div>
-
-  </div>
-   </div>
+      </p>
      </div>
+
+    <div>
+     <%= link_to "退会しない", root_path , class: "btn btn-primary"  %>
+     <%= link_to "退会する", customers_withdraw_path(@customer), method: :patch, class: "btn btn-danger" %>
+    </div>
+
+  </div>
+ </div>
+</div>

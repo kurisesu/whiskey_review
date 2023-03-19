@@ -1,7 +1,7 @@
 <div class="container">
  <div class="row">
   <div class="col m-3">
-    <h2 class="text-black">ジャンル一覧・登録</h2><br>
+    <h2 class="text-light">ジャンル一覧・登録</h2><br>
        <%= form_with model: @genre, url: admin_genres_path, method: :post, local:true do |f| %>
        <table class="table table-borderless table-dark" style="opacity: 0.8;">
 
@@ -28,7 +28,7 @@
         <% @genres.each do |genre| %>
         <tr>
           <th scope="low"><%= genre.id %></th>
-          <th scope="low"><%= link_to genre.genre_name, admin_genre_path(genre), class:"text-white" %></th>
+          <th scope="low"><%= genre.genre_name %></th>
       　　　<th scope="low"><%= link_to "編集する", edit_admin_genre_path(genre), class:'btn btn-success' %></th>
     	    <th></th>
         </tr>
@@ -36,6 +36,10 @@
       </tbody>
 
     </table>
+
+     <div class= "text-light">
+　　　<%= paginate @genres %>
+　　 </div>
 
   </div>
  </div>

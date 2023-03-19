@@ -1,16 +1,17 @@
 <div class="row">
   <div class="col m-3">
-    <h2 class="text-black">ジャンル編集</h2><br>
-    <div class="row">
+    <h2 class="text-light">ジャンル編集</h2><br>
+   <div class="row">
+
       <div class="mx-auto">
         <%= form_with model: [:admin, @genre], local: true do |f| %>
-          <div><%= f.label :ジャンル名 %></div>
+          <div class="text-light"><%= f.label :ジャンル名 %></div>
           <div><%= f.text_field :genre_name %></div>
-          <div><%= f.submit '変更を保存', class: 'btn btn-success' %></div>
+          <div class="mt-2"><%= f.submit '変更を保存', class: 'btn btn-success' %></div>
         <% end %>
-       <%= link_to "ジャンルを削除する", admin_genre_path(@genre.id), method: :delete, class:"btn btn-danger" %>
+        <%= link_to "ジャンルを削除する", admin_genre_path(@genre.id), method: :delete, class:"btn btn-danger mt-2" %>
       </div>
-      </div>
-    </div>
-  </div>
+
+   </div>
+ </div>
 </div>

@@ -1,8 +1,10 @@
 <div class="container">
  <div class="row">
   <div class="col m-3">
+    
     <h2 class="text-white">レビュー一覧</h2><br>
-        <p class="text-right"><%= link_to "レビューを新規登録",new_admin_review_path, class:"btn btn-primary text-white" %></p>
+     <p class="text-right"><%= link_to "レビューを新規登録",new_admin_review_path, class:"btn btn-primary text-white" %></p>
+    
     <table class="table table-borderless table-dark" style="opacity: 0.8;">
 
       <thead>
@@ -27,14 +29,17 @@
             <%end%>
           </th>
     	    <th></th>
-				  </th>
         </tr>
         <% end %>
       </tbody>
 
-    </table>
+     </table>
+    
+    <div>
+       <%= paginate @reviews %>
+    </div>
 
   </div>
  </div>
- <%= paginate @reviews %>
 </div>
+  

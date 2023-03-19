@@ -1,10 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3 offset-md-1">
+    <div class="col-md-3 offset-md-1 text-light">
       <h2>管理者ログイン</h2>
     </div>
   </div>
-  <div class="row">
+  
+  <div class="row text-light">
     <div class=" mx-auto">
   　<%= form_with model: @admin, url:  new_admin_session_path do |f| %>
   <div class="field">
@@ -27,6 +28,8 @@
   <div class="actions">
     <%= f.submit "ログイン" %>
   </div>
-<% end %>
+  <% end %>
+   </div>
+  </div>
 
 <%= render "admin/shared/links" %>

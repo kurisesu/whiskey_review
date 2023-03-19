@@ -1,8 +1,8 @@
 <div class="container">
  <div class="row">
   <div class="col m-3">
-    <h1 class="text-black">レビュー詳細</h1><br>
-    <div class = "col-9 mt-5" >
+    <h1 class="text-light">レビュー詳細</h1><br>
+    <div class = "col-10 mt-5" >
     	<div class="row">
         <div class="col -5 text-center" >
          <% if @review.image.attached? %>
@@ -12,70 +12,81 @@
         <% end %>
                   <!--タグリスト-->
           <% @tag_list.each do |list|%>
-           <div><%=list.name %>
-          <%="(#{list.review_tags.count})" %></div><% end %>
+           <div class="text-light"><%=list.name %>
+          <%="(#{list.review_tags.count})" %>
+          </div>
+          <% end %>
 
     </div>
+
     <div class = "col -5" >
-    <table class="table table-borderless table-dark" style="opacity: 0.8;">
 
-     <tr>
-       <th>ウイスキー名</th>
-	     <td><%= @review.whiskey_name %></td>
-     </tr>
+     <div class = "bg-secondary">
 
-     <tr>
-	     <th>ウイスキーの紹介</th>
-	     <td><%= @review.introduction_text %></td>
-	   </tr>
+      <div class = "font-weight-bold">ウイスキー名</div>
+      <div><%= @review.whiskey_name %></div>
 
-	   <tr>
-	     <th>ジャンル</th>
-	           <% if @review.genre != nil %>
-      <td><%= @review.genre.genre_name %></td>
-            <% else %>
-             <td>ジャンルはありません<td>
-            <%end%>
-	   </tr>
-	  </table>
-	    <%= link_to "コメントを送る", new_review_comment_path(@review), class:'btn btn-success' %>
+      <div class = "font-weight-bold mt-2">ウイスキーの紹介</div>
+      <div><%= @review.introduction_text %></div>
+
+      <div class = "font-weight-bold mt-2">ジャンル</div>
+       <div>
+         <% if @review.genre != nil %>
+      　   <%= @review.genre.genre_name %>
+         <% else %>
+           ジャンルはありません
+         <%end%>
+       </div>
+       
+       <% if admin_signed_in? %>
+        <%= link_to "編集する", edit_admin_review_path(@review), class:'btn btn-success' %>
+    　  <% end %>
+       
+       
+
+     </div>
+
+	    <% if customer_signed_in? %>
+	     <%= link_to "コメントを送る", new_review_comment_path(@review), class:'btn btn-success mt-2' %>
+     <% end %>
 
 	    <% @review.comments.each do |comment| %>
-	    <div class="d-flex justify-content-center mb-5">
-       <% if admin_signed_in? || current_customer == comment.customer %>
-       <%= link_to "削除する", review_comment_path(@review.id, comment.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-     　<% end %>
-     </div>
-	     <div id="raty_<%= comment.id %>"></div>
+	     <div class= "bg-secondary">
+	      <div class="justify-content-center mb-5 mt-3">
+	        <div>
+          <div>
+           <p> 名前:<%= comment.customer.nickname %></p>
+          </div>
+          <div>
+          <p> コメント:<%= comment.comment %> </p>
+          </div>
+         </div>
+        </div>
 
-    <script>
-      var elem = document.getElementById('raty_<%= comment.id %>')
-      var opt = {
-        starOn: "<%= asset_path('star-on.png') %>",
-        starOff: "<%= asset_path('star-off.png') %>",
-        starHalf: "<%= asset_path('star-half.png') %>",
-        readOnly: true,
-        score: <%= comment.star %>,
-      }
-      raty(elem, opt);
-    </script>
-    <div>
-     <p> コメント:<%= comment.comment %> </p>
-    </div>
+        <div id="raty_<%= comment.id %>"></div>
 
-     <div>
-      <p> 名前:<%= comment.customer.nickname %></p>
-     </div>
-	    <% end %>
+       <script>
+        var elem = document.getElementById('raty_<%= comment.id %>')
+        var opt = {
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          starHalf: "<%= asset_path('star-half.png') %>",
+          readOnly: true,
+          score: <%= comment.star %>,
+        }
+        raty(elem, opt);
+       </script>
 
-	    <% if admin_signed_in? %>
-      <%= link_to "編集する", edit_admin_review_path(@review), class:'btn btn-success' %>
-    　<% end %>
+        <% if admin_signed_in? || current_customer == comment.customer %>
+         <%= link_to "削除する", review_comment_path(@review.id, comment.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+        <% end %>
 
+       </div>
+       <% end %>
+       
+	    </div>
+	   </div>
 	  </div>
-	  </div>
-	  </div>
-
   </div>
  </div>
 </div>

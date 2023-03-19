@@ -1,12 +1,12 @@
 <div class="container">
-  <div class="row">
+  <div class="row text-light">
     <h3>会員一覧</h3>
   </div>
 
-  <table class="table cart_products">
+  <table class="table cart_products text-light">
     <tr>
       <th>会員ID</th>
-      <th>氏名</th>
+      <th>ニックネーム</th>
       <th>メールアドレス</th>
       <th>ステータス</th>
     </tr>
@@ -27,5 +27,9 @@
     </tr>
     <% end %>
   </table>
+
+  <div>
+       <%= paginate @customers %>
+  </div>
 
 </div>

@@ -3,32 +3,20 @@ class Public::ReviewsController < ApplicationController
 before_action :authenticate_customer!, only: [:show, :create]
 
   def index
-    @reviews = Review.page(params[:page])
+    @reviews = Review.page(params[:page]).per(8)
     @tags = Tag.all
 
     @reviews = if params[:tag_id].present?
         tag = Tag.find_by(id: params[:tag_id])
         if tag.present?
-          tag.reviews
+          tag.reviews.page(params[:page]).per(8)
         else
-          Review.all
+          Review.page(params[:page]).per(8)
         end
       else
-        Review.all
+        Review.page(params[:page]).per(8)
       end
   end
-        # if params[:search].present?
-    #   reviews = Review.reviews_serach(params[:search])
-    # elsif params[:tag_id].present?
-    #   @tag = Tag.find(params[:tag_id])
-    #   reviews = @tag.items.order(created_at: :desc)
-    # else
-    #   reviews = Review.all.order(created_at: :desc)
-    # end
-    # @tag_lists = Tag.all
-    # @reviews = Kaminari.paginate_array(reviews).page(params[:page]).per(10)
-
-    # # @review = current_customer.reviews.new
 
 
   def show

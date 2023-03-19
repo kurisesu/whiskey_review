@@ -1,44 +1,54 @@
 <div class="container">
   <div class="row">
     <div class="col-md-9 offset-md-1 my-5">
-      <h2>レビュー一覧（全<%= @reviews.count %>件）</h2>
-      <div class='d-flex justify-content-start flex-wrap mb-5'>
-
-        <div class="search_form">
-          <%= form_tag({controller:"reviews",action:"index"}, method: :get) do %>
-            <%= select_tag :tag_id, options_from_collection_for_select(@tags, :id, :name, selected: params[:tag_id]) %>
-            <%= submit_tag "検索する" %>
-          <% end %>
-
-
-        <div class="row">
-
-        <% @reviews.each do |review| %>
-        <div class="col-md-3">
-        <div class="card mx-auto mt-4 bg-dark text-white">
-
-        <%= link_to admin_review_path(review) do %>
-          <% if review.image.attached? %>
-            <%= image_tag review.image, class:"card-img-top top-review-image" %>
-          <% else %>
-            <%= image_tag 'no_image.jpg', class:"card-img-top top-review-image" %>
-          <% end %>
+      <h2 class="text-white">レビュー一覧（全<%= @reviews.count %>件）</h2>
+      <div class="search_form">
+        <%= form_tag({controller:"reviews",action:"index"}, method: :get) do %>
+          <%= select_tag :tag_id, options_from_collection_for_select(@tags, :id, :name, selected: params[:tag_id]) %>
+          <%= submit_tag "検索する" %>
         <% end %>
+      </div>
 
-            <div class="card-body">
-            <h6 class="card-title">
-              <%= link_to review.whiskey_name, admin_review_path(review), class: 'text-white' %>
-            </h6>
-            <div class="card-text">
-              <%= simple_format(review.introduction_text) %>
+      <div class='justify-content-start mb-5'>
+        <div class="row">
+         <% @reviews.each do |review| %>
+           <div class="col-md-3">
+            <div class="card mx-auto mt-4 bg-dark text-white">
+
+              <%= link_to admin_review_path(review) do %>
+                <% if review.image.attached? %>
+                  <%= image_tag review.image, class:"card-img-top top-review-image" %>
+                <% else %>
+                  <%= image_tag 'no_image.jpg', class:"card-img-top top-review-image" %>
+                <% end %>
+              <% end %>
+
+              <div class="card-body">
+
+                <h6 class="card-title">
+                  <%= link_to review.whiskey_name, admin_review_path(review), class: 'text-white' %>
+                </h6>
+                <div class="card-text">
+                  <%= simple_format(review.genre.genre_name) %>
+                </div>
+              </div>
+
+              <div class="card-footer text-right">
+                <small>
+                  <%= review.created_at.in_time_zone('Tokyo').strftime('%Y年%m月%d日 %H時%m分') %>
+                </small>
+              </div>
             </div>
-            </div>
-            <div class="card-footer text-right">
-              <small>
-                <%= review.created_at.in_time_zone('Tokyo').strftime('%Y年%m月%d日 %H時%m分') %>
-              </small>
-            </div>
+           </div>
+         <% end %>
         </div>
-        </div>
-          <% end %>
-        </div>
+
+         <div>
+          <%= paginate @reviews %>
+         </div>
+
+       </div>
+
+    </div>
+  </div>
+</div>

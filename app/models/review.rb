@@ -7,11 +7,14 @@ class Review < ApplicationRecord
     has_many :customers
     has_many :review_tags,dependent: :destroy
     has_many :tags,through: :review_tags
+    validates :whiskey_name, presence: true
+    validates :introduction_text, presence: true
+    validates :image, presence: true
 
     def get_image
         true
     end
-    
+
     def self.items_serach(search)
      Review.where(['title LIKE ? OR content LIKE ?', "%#{search}%", "%#{search}%"])
     end

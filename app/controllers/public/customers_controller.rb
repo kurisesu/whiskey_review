@@ -15,7 +15,8 @@ class Public::CustomersController < ApplicationController
       redirect_to customers_my_page_path(current_customer)
     else
       flash[:alert] = "もう一度入力してください。"
-      render :customers_withdraw_customers
+      @customer = current_customer
+      render :edit
     end
   end
 
